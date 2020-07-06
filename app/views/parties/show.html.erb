@@ -7,6 +7,7 @@
         </tr>
         <tr>
           <% @cells[3..5].each do |cell| %>
+
             <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
           <% end %>
         </tr>
