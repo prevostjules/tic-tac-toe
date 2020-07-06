@@ -2,17 +2,17 @@
     <tbody>
         <tr>
           <% @cells.first(3).each do |cell| %>
-            <td><%= cell.id %><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
+            <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
           <% end %>
         </tr>
         <tr>
           <% @cells[3..5].each do |cell| %>
-            <td><%= cell.id %><%= cell.symbol %></td>
+            <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
           <% end %>
         </tr>
         <tr>
           <% @cells[6..8].each do |cell| %>
-            <td><%= cell.id %><%= cell.symbol %></td>
+            <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
           <% end %>
         </tr>
     </tbody>
