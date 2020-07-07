@@ -1,28 +1,41 @@
-<table>
-    <tbody>
-        <tr>
-          <% @cells.first(3).each do |cell| %>
-            <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
-          <% end %>
-        </tr>
-        <tr>
-          <% @cells[3..5].each do |cell| %>
-
-            <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
-          <% end %>
-        </tr>
-        <tr>
-          <% @cells[6..8].each do |cell| %>
-            <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
-          <% end %>
-        </tr>
-    </tbody>
-</table>
-<% if @winner == current_user %>
-  <h2>Bravo, vous avez battu l'ordi</h2>
-<% elsif @winner == "computer" %>
-  <h2>Bouhouhou, vous avez perdu</h2>
-<% elsif @winner == "equality" %>
-  <h2>Egalité, dommage</h2>
-  <%= link_to "Nouvelle Partie", parties_path, :method => :post, :action => :create %>
-<% end %>
+<div class="container d-flex justify-content-around align-items-center max-height">
+  <table>
+      <tbody>
+          <tr>
+            <% @cells.first(3).each do |cell| %>
+              <% if cell.symbol == "start" %>
+                <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
+              <% else %>
+                <td><%= cell.symbol %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          <tr>
+            <% @cells[3..5].each do |cell| %>
+              <% if cell.symbol == "start" %>
+                <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
+              <% else %>
+                <td><%= cell.symbol %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          <tr>
+            <% @cells[6..8].each do |cell| %>
+              <% if cell.symbol == "start" %>
+                <td><%= link_to cell.symbol, party_cell_path(@party, cell), :method => :patch, :action => :update %></td>
+              <% else %>
+                <td><%= cell.symbol %></td>
+              <% end %>
+            <% end %>
+          </tr>
+      </tbody>
+  </table>
+  <% if @winner == current_user %>
+    <h2>Bravo, vous avez battu l'ordi</h2>
+  <% elsif @winner == "computer" %>
+    <h2>Bouhouhou, vous avez perdu</h2>
+  <% elsif @winner == "equality" %>
+    <h2>Egalité, dommage</h2>
+    <%= link_to "Nouvelle Partie", parties_path, :method => :post, :action => :create %>
+  <% end %>
+</div>
